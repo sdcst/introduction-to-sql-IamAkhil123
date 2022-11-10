@@ -1,40 +1,39 @@
 #!python
+import sqlite3
+import sqlite3 as pyodbc
+conn = pyodbc.connect('dbase.db')
+
+cursor = conn.cursor()
+
+cursor.execute("pet name, pet species, pet breed, owner name, owner phone number, owner email, owner balance, data of first visit(mm/dd/yy)")
+conn.commit()
+"""
 import sqlite3 
 
 file = 'dbase.db'
-conn  =  sqlite3.connect('dbase.db')
-cursor = conn.cursor()
-x = input('pet name')
-c = input('pet species')
-v = input('pet breed')
-b = input('owner name')
-n = input('owner phone number')
-m = input('owner email')
-a = input('owner balance')
-s = input('date of first visit(mm/dd/yy)')
-data = str([x,c,v,b,n,m,a,s])
-cursor.execute(data)
-conn.commit ()
-
-"""
-file = 'dbase.db'
-with open(file, 'w') as my_file:
-
-
-
- data = [x,c,v,b,n,m,a,s]
- my_file.write(str(data))
 connection = sqlite3.connect(file)
 print(connection)
+x = str(input('pet name'))
+c = str(input('pet species'))
+v = str(input('pet breed'))
+b = str(input('owner name'))
+n = str(input('owner phone number'))
+m = str(input('owner email'))
+a = str(input('owner balance'))
+s = str(input('date of first visit(mm/dd/yy)'))
+data = [x,c,v,b,n,m,a,s]
+Customers =  ("pet name, pet species, pet breed, owner name, owner phone number, owner email, owner balance, data of first visit(mm/dd/yy)")
+query = (Customers, data)
+print (query)
+cursor.execute(query)
 cursor = connection.cursor()
-f = ' '.join(data)
-print(data)
-cursor.execute(f)
 connection.commit()
 result = cursor.fetchall()
 print(result)
 """
 """
+
+uery = f"create table if no exists customers(petname, species, breed, name, phonenumber, email, balance, dataoffirstvisit (VALUES('{x}','{c}','{v}','{b}','{n}','{m}','{a},','{s});"
 Create a program that will store the database for a veterinary
 Each record needs to have the following information:
 id unique integer identifier
