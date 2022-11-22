@@ -1,12 +1,33 @@
 #!python
 import sqlite3
-import sqlite3 as pyodbc
-conn = pyodbc.connect('dbase.db')
+
+file = 'dbase.db'
+connection = sqlite3.connect(file)
+print(connection)
+
+cursor = connection.cursor()
+query = """
+create table if not exists customers (
+    id integer primary key autoincrement,
+    pet name, 
+    pet species, 
+    pet breed, 
+    owner name, 
+    owner phone number, 
+    owner email, 
+    owner balance, 
+    data of first visit(mm/dd/yy)");
+"""
+cursor.execute(query)
+
 
 cursor = conn.cursor()
 
 cursor.execute("pet name, pet species, pet breed, owner name, owner phone number, owner email, owner balance, data of first visit(mm/dd/yy)")
 conn.commit()
+
+CREATE TABLE customers ("pet name, pet species, pet breed, owner name, owner phone number, owner email, owner balance, data of first visit(mm/dd/yy)");
+
 """
 import sqlite3 
 
