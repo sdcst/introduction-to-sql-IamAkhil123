@@ -14,6 +14,7 @@ print(type(result))
 print(result)
 for i in result:
     print(i)
+    
 """
 Let's analyze the code from lines 9-15
 cursor = connection.cursor()
