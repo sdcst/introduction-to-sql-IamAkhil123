@@ -1,6 +1,29 @@
 #!python
 
+import  sqlite3
+conn  =  sqlite3 . connect ( 'mydatabase.db' )
+cursor  =  conn.cursor ()
+cursor.execute("CREATE TABLE salesman(petname n(5), petspecies(30), petbreed(35), ownername(7,2));")
+
+s_id = input('Petname:')
+s_name = input('Petspecies:')
+s_city = input('Petbreed:')
+s_commision = input('Ownername:')
+cursor.execute("""
+INSERT INTO salesman(petname, petspecies, petbreed, ownername)
+VALUES (?,?,?,?)
+""", (s_id, s_name, s_city, s_commision))
+conn.commit ()
+print ( 'Data entered successfully.' )
+conn . close ()
+if (conn):
+  conn.close()
+  print("\nThe SQLite connection is closed.")
+"""
 import sqlite3
+
+connection = sqlite3.connect("assignment.db")
+cursor = connection.cursor()
 
 x = str(input('pet name'))
 c = str(input('pet species'))
@@ -10,19 +33,20 @@ n = str(input('owner phone number'))
 m = str(input('owner email'))
 a = str(input('owner balance'))
 s = str(input('date of first visit(mm/dd/yy)'))
+data = [x,c,v,b,n,m,a,s]
 
-sqliteConnection = sqlite3.connect('assignment.db')
-cursor = sqliteConnection.cursor()
 print("Connected to SQLite")
-query = """CREATE TABLE customers (petname, petspecies, petbreed, ownername, ownerphonenumber, owneremail, ownerbalance, dateoffirstvisit)"""
-data = (x,c,v,b,n,m,a,s)
+query = "CREATE TABLE customers (petname, petspecies, petbreed, ownername, ownerphonenumber, owneremail, ownerbalance, dateoffirstvisit)"
 cursor.execute(data, query)
-sqliteConnection.commit()
+connection.commit()
 print("Python Variables inserted successfully into assignment.db table")
 
 cursor.close()
-sqliteConnection.close()
+connection.close()
 print("The SQLite connection is closed")
+"""
+
+
 """
 Each record needs to have the following information:
 id unique integer identifier
