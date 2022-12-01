@@ -23,3 +23,5 @@ result = cursor.fetchall()
 print(result)
 for i in result:
     print(i)
+
+    
